@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class EvenNumbersGeneratorTests {
     @Test
-    public void Min_One_Max_Tree_Results_In_Two()
+    public void getEvenNumbersList_Range1to3_2()
     {
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
         List<Integer> expectedResult = Arrays.asList(2);
@@ -20,35 +20,35 @@ public class EvenNumbersGeneratorTests {
     }
 
     @Test
-    public void Min_And_Max_Are_Zero_And_Equal_Results_In_Zero()
+    public void getEvenNumbersList_Range0to0_0()
     {
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
-        List<Integer> expectedResult = Arrays.asList(0);
+        List<Integer> expected = Arrays.asList(0);
 
-        List<Integer> actualResult = sut.getEvenNumbersList(0, 0);
+        List<Integer> actual = sut.getEvenNumbersList(0, 0);
 
-        assertThat(actualResult).isEqualTo(expectedResult);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    public void Min_And_Max_Are_NotEven_And_Equal_Results_In_Null()
+    public void getEvenNumbersList_Range1to1_EmptyList()
     {
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
-        List<Integer> expectedResult = Arrays.asList();
+        List<Integer> expected = Arrays.asList();
 
-        List<Integer> actualResult = sut.getEvenNumbersList(1, 1);
+        List<Integer> actual = sut.getEvenNumbersList(1, 1);
 
-        assertThat(actualResult).isEqualTo(expectedResult);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    public void Min_One_Max_Five_Results_In_Two_And_Four()
+    public void getEvenNumbersList_Range2to4_2and4()
     {
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
-        List<Integer> expectedResult = Arrays.asList(2, 4);
+        List<Integer> expected = Arrays.asList(2, 4);
 
-        List<Integer> actualResult = sut.getEvenNumbersList(1, 5);
+        List<Integer> actual = sut.getEvenNumbersList(1, 5);
 
-        assertThat(actualResult).isEqualTo(expectedResult);
+        assertThat(actual).isEqualTo(expected);
     }
 }

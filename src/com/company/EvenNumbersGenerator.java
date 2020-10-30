@@ -8,7 +8,8 @@ public class EvenNumbersGenerator {
         List<Integer> evenNumbersList = new ArrayList<>();
         for (int i = min; i <= max; i++)
         {
-            if(i%2 == 0)
+            boolean isEven = i%2 == 0;
+            if(isEven)
             {
                 evenNumbersList.add(i);
             }
