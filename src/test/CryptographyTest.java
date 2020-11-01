@@ -3,8 +3,7 @@ package test;
 import com.company.Main;
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+import static org.assertj.core.api.Assertions.*;
 
 public class CryptographyTest {
     @Test
