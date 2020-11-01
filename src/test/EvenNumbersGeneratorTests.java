@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EvenNumbersGeneratorTests {
     @Test
-    public void getEvenNumbersList_Range1to3_2()
-    {
+    public void getEvenNumbersList_Range1to3_2(){
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
         List<Integer> expectedResult = Arrays.asList(2);
 
@@ -20,8 +20,7 @@ public class EvenNumbersGeneratorTests {
     }
 
     @Test
-    public void getEvenNumbersList_Range0to0_0()
-    {
+    public void getEvenNumbersList_Range0to0_0(){
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
         List<Integer> expected = Arrays.asList(0);
 
@@ -31,8 +30,7 @@ public class EvenNumbersGeneratorTests {
     }
 
     @Test
-    public void getEvenNumbersList_Range1to1_EmptyList()
-    {
+    public void getEvenNumbersList_Range1to1_EmptyList(){
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
         List<Integer> expected = Arrays.asList();
 
@@ -42,8 +40,7 @@ public class EvenNumbersGeneratorTests {
     }
 
     @Test
-    public void getEvenNumbersList_Range2to4_2and4()
-    {
+    public void getEvenNumbersList_Range2to4_2and4(){
         EvenNumbersGenerator sut = new EvenNumbersGenerator();
         List<Integer> expected = Arrays.asList(2, 4);
 
