@@ -1,40 +1,57 @@
 package com.company;
 
-import java.sql.SQLOutput;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class InputValidator {
+    static InputRange range;
+    static boolean inputIsValid = false;
 
-    InputRange range;
-
-    public InputRange defineInput(String userInput){
-
+    public static InputRange defineInput(String userInput){
         if ( userInput.equals("true") ) {
-            range = InputRange.STRINGTRUE;
+            InputValidator.inputIsValid = true;
+            InputValidator.range = InputRange.STRINGTRUE;
         } else if ( userInput.equals("false") ) {
-            range = InputRange.STRINGFALSE;
+            InputValidator.inputIsValid = true;
+            InputValidator.range = InputRange.STRINGFALSE;
         } else if ( userInput.equals("1") ) {
-            range = InputRange.SRTINGONE;
+            InputValidator.inputIsValid = true;
+            InputValidator.range = InputRange.SRTINGONE;
         } else if ( userInput.equals("0") ) {
-            range = InputRange.STRINGZERO;
+            InputValidator.inputIsValid = true;
+            InputValidator.range = InputRange.STRINGZERO;
         }
-
-        return range;
+        return InputValidator.range;
     }
 
-    public void processUserInput(){
-        switch (range) {
+    public static void waitForValidInput(){
+        String userInput;
+        while (!InputValidator.inputIsValid) {
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(System.in));
+            try {
+                System.out.println("Your input is not valid, please provide correct value");
+                userInput = reader.readLine();
+                InputValidator.defineInput(userInput);
+            } catch (NullPointerException | IOException e) {
+            }
+        }
+    }
+
+    public static String processUserInput(String input){
+        InputValidator.defineInput(input);
+        InputValidator.waitForValidInput();
+        switch (InputValidator.range) {
             case STRINGTRUE:
+                return "You selected coffee, thank You";
             case STRINGFALSE:
-                System.out.println("Boolean type was provided");
-                break;
+                return "I will bring You a glass of water";
             case SRTINGONE:
+                return "You selected tea, thank You";
             case STRINGZERO:
-                System.out.println("Integer type was provided");
-                break;
-            default:
-                System.out.println("Provided value  incorrect. Please input 'true', 'false, '1' or '0''");
-                break;
+                return "You didn't make your choice";
         }
+        return null;
     }
-
 }
