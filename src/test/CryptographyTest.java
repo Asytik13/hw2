@@ -7,25 +7,25 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CryptographyTest {
     @Test
-    public void encrypt_abc_fgh(){
+    public void encrypt_HappyPath(){
         String expected = "fgh";
-        String actual = Main.encrypt(5, "abc");
+        String actual = Main.convertString(5, "abc", false);
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    public void decrypt_fgh_abc(){
+    public void decrypt_HappyPath(){
         String expected = "abc";
-        String actual = Main.decrypt(5, "fgh");
+        String actual = Main.convertString(5, "fgh", true);
 
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    public void encrypt_null_nullPointerException(){
+    public void convert_null_nullPointerException(){
         assertThatNullPointerException().isThrownBy(() -> {
-            Main.encrypt(5, null);
+            Main.convertString(5, null, true);
         });
     }
 }
