@@ -1,20 +1,28 @@
 package com.company;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.IntStream;
+
+import static java.util.Collections.addAll;
 
 public class Main {
 
     public static void main(String[] args){
         // Main.factorialBigNumbers(5);
         // Main.calculateFactorial(25);
-        int[] a = Main.fibonacci(10);
+        Integer[] a = Main.fibonacci(10);
         for ( int i = 0 ; i < a.length ; i++ ) {
             System.out.println(a[i]);
         }
+        List<Integer> list1 = new ArrayList<>();
+        addAll(list1, a);
 
-        Arrays.asList(a).forEach(System.out::println);
+
+        Arrays.asList(list1).forEach(System.out::println);
     }
 
     private static int factorial(int num){
@@ -41,10 +49,10 @@ public class Main {
     }
 
 
-    private static int[] fibonacci(int a){
+    private static Integer[] fibonacci(int a){
 
 
-        int[] result = new int[a];
+        Integer[] result = new Integer[a];
         int number1 = 0;
         int number2 = 1;
         int sum;
