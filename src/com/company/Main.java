@@ -16,24 +16,7 @@ public class Main {
         BufferedReader reader =
                 new BufferedReader(new InputStreamReader(System.in));
         String userInput = reader.readLine();
-        System.out.println(InputValidator.processUserInput(userInput));
-
-//        try {
-//            BufferedReader reader =
-//                    new BufferedReader(new InputStreamReader(System.in));
-//            String userInput = reader.readLine();
-//
-//            String userOption = InputValidator.processUserInput(userInput);
-//            System.out.println(userOption);
-//
-//        } catch (NullPointerException e) {
-//            System.out.println("Your input is not valid, please provide correct value");
-//            BufferedReader reader =
-//                    new BufferedReader(new InputStreamReader(System.in));
-//            String userInput = reader.readLine();
-//
-//            String userOption = InputValidator.processUserInput(userInput);
-//            System.out.println(userOption);
-//        }
+        String order = new InputValidator().processUserInput(userInput);
+        System.out.println(order);
     }
 }

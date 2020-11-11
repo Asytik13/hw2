@@ -5,27 +5,29 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class InputValidator {
-    static InputRange range;
+
+
     static boolean inputIsValid = false;
 
-    public static InputRange defineInput(String userInput){
+    public InputRange defineInput(String userInput){
+        InputRange range = null;
         if ( userInput.equals("true") ) {
             InputValidator.inputIsValid = true;
-            InputValidator.range = InputRange.STRINGTRUE;
+            range = InputRange.STRINGTRUE;
         } else if ( userInput.equals("false") ) {
             InputValidator.inputIsValid = true;
-            InputValidator.range = InputRange.STRINGFALSE;
+            range = InputRange.STRINGFALSE;
         } else if ( userInput.equals("1") ) {
             InputValidator.inputIsValid = true;
-            InputValidator.range = InputRange.SRTINGONE;
+            range = InputRange.SRTINGONE;
         } else if ( userInput.equals("0") ) {
             InputValidator.inputIsValid = true;
-            InputValidator.range = InputRange.STRINGZERO;
+            range = InputRange.STRINGZERO;
         }
-        return InputValidator.range;
+        return range;
     }
 
-    public static void waitForValidInput(){
+    public void waitForValidInput(){
         String userInput;
         while (!InputValidator.inputIsValid) {
             BufferedReader reader =
@@ -33,16 +35,16 @@ public class InputValidator {
             try {
                 System.out.println("Your input is not valid, please provide correct value");
                 userInput = reader.readLine();
-                InputValidator.defineInput(userInput);
+                InputRange range = defineInput(userInput);
             } catch (NullPointerException | IOException e) {
             }
         }
     }
 
-    public static String processUserInput(String input){
-        InputValidator.defineInput(input);
-        InputValidator.waitForValidInput();
-        switch (InputValidator.range) {
+    public String processUserInput(String input){
+        InputRange range = defineInput(input);
+        waitForValidInput();
+        switch (range) {
             case STRINGTRUE:
                 return "You selected coffee, thank You";
             case STRINGFALSE:
