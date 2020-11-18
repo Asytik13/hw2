@@ -54,13 +54,18 @@ public class Main {
     }
 
     public static void calculateFactorial(int number){
-        BigInteger one = BigInteger.ONE;
+//        BigInteger one = BigInteger.ONE;
+//
+//        for ( int i = 1 ; i <= number ; i++ ) {
+//            BigInteger integer = BigInteger.valueOf(i);
+//            one = one.multiply(integer);
+//        }
 
-        for ( int i = 1 ; i <= number ; i++ ) {
-            BigInteger integer = BigInteger.valueOf(i);
-            one = one.multiply(integer);
-        }
-        System.out.println(one);
+        BigInteger result = IntStream.rangeClosed(1, number)
+                .mapToObj(BigInteger::valueOf)
+                .reduce(BigInteger.ONE, BigInteger::multiply);
+
+        System.out.println(result);
     }
 
 
